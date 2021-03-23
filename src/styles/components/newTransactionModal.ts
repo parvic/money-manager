@@ -37,28 +37,6 @@ export const Container = styled.form`
       margin-top: 1rem;
     }
   }
-
-  button {
-    width: 100%;
-    height: 4rem;
-    margin-top: 1.5rem;
-
-    background-color: ${light.colors.green};
-
-    color: #fff;
-    font-weight: 600;
-
-    border: 0;
-    border-radius: 0.25rem;
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.8);
-    }
-
-  }
-
 `;
 
 export const TransactionTypeContainer = styled.div`
@@ -67,35 +45,59 @@ export const TransactionTypeContainer = styled.div`
   gap: 0.5rem;
 
   margin: 1rem 0;
+`;
 
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+interface RadioboxProps {
+  isActive: boolean;
+}
 
-    height: 4rem;
+export const RadioboxButton = styled.button<RadioboxProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    border: 1px solid #d7d7d7;
-    border-radius: 0.25rem;
+  height: 4rem;
 
-    background-color: transparent;
+  border: 1px solid #d7d7d7;
+  border-radius: 0.25rem;
 
-    transition: border-color 0.2s;
+  background-color: ${(props) => props.isActive ? '#ccc' : 'transparent'};
 
-    &:hover {
-      border-color: ${darken(0.1, '#d7d7d7')}
-    }
+  transition: border-color 0.2s;
 
-    img {
-      height: 20px;
-      width: 20px;
-    }
+  &:hover {
+    border-color: ${darken(0.1, '#d7d7d7')}
+  }
 
-    span {
-      display: inline-block;
-      color: ${light.colors.title};
-      font-size: 1rem;
-      margin-left: 1rem;
-    }
+  img {
+    height: 20px;
+    width: 20px;
+  }
+
+  span {
+    display: inline-block;
+    color: ${light.colors.title};
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 4rem;
+  margin-top: 1.5rem;
+
+  background-color: ${light.colors.green};
+
+  color: #fff;
+  font-weight: 600;
+
+  border: 0;
+  border-radius: 0.25rem;
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
   }
 `;

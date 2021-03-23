@@ -2,8 +2,9 @@ import Modal from "react-modal";
 import * as S from "../styles/components/newTransactionModal";
 
 import incomeImg from "../assets/income.svg";
-import outcomeImg from "../assets/outcome.svg";
+import expenseImg from "../assets/outcome.svg";
 import closeImg from "../assets/close.svg";
+import { useState } from "react";
 
 Modal.setAppElement('#root');
 
@@ -13,6 +14,9 @@ interface NewTransactionProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose } : NewTransactionProps) {
+
+  const [transactionType, setTransactionType] = useState('');
+
   return (
     <Modal
       isOpen={isOpen}
@@ -29,20 +33,31 @@ export function NewTransactionModal({ isOpen, onRequestClose } : NewTransactionP
 
         <input type="text" placeholder="Title"/>
         <input type="number" placeholder="Amount"/>
+        
         <S.TransactionTypeContainer>
-          <button type="button">
+          <S.RadioboxButton
+            type="button"
+            onClick={() => {setTransactionType('income')}}
+            isActive={transactionType === 'income'}
+          >
             <img src={incomeImg} alt="Income"/>
             <span>Income</span>
-          </button>
+          </S.RadioboxButton>
 
-          <button type="button">
-            <img src={outcomeImg} alt="Outcome"/>
+          <S.RadioboxButton
+            type="button"
+            onClick={() => {setTransactionType('expense')}}
+            isActive={transactionType === 'expense'}
+          >
+            <img src={expenseImg} alt="Expense"/>
             <span>Expense</span>
-          </button>
+          </S.RadioboxButton>
         </S.TransactionTypeContainer>
+        
         <input type="text" placeholder="Category"/>
-        {/* <input type="date" name="date" id={Date()}/> */}
-        <button type="submit">Register</button>
+        <S.SubmitButton type="submit">
+          Register
+        </S.SubmitButton>
       </S.Container>
     </Modal>
   );
