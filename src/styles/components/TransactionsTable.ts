@@ -29,5 +29,13 @@ export const Container = styled.div`
         color: ${light.colors.title};
       }
     }
+
+    .income {
+      color: ${light.colors.green};
+    }
+
+    .expense {
+      color: ${light.colors.red};
+    }
   }
 `;
